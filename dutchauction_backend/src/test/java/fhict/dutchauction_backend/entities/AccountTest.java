@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {DutchauctionBackendApplication.class})
-@TestPropertySource(locations = "classpath:application.properties")
+@TestPropertySource(locations = "classpath:application-test.properties")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public class AccountTest {
 
@@ -25,7 +25,7 @@ public class AccountTest {
 
 
     @Test
-    public void givenStudent_whenSave_thenGetOk() {
+    public void newAccountTest() {
         Account account = new Account("john", "johnspassword");
         accountRepository.save(account);
 

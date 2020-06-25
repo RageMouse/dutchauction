@@ -23,9 +23,11 @@ public class Account {
     @NotNull
     private String password;
 
-    @ManyToMany
-    @ElementCollection(targetClass = Auction.class)
-    public List<Auction> auctions;
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @JoinTable(name = "account_product",
+            joinColumns = {@JoinColumn(name = "accountId")},
+            inverseJoinColumns = {@JoinColumn(name = "productId")})
+    private List<Product> products;
 
     public Account(){
     }

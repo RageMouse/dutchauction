@@ -5,22 +5,33 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
+    "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "core-js": "^3.6.4",
+    "sweetalert2": "^9.15.1",
     "vue": "^2.6.11",
+    "vue-axios": "^2.1.5",
     "vue-router": "^3.1.6",
+    "vue-sweetalert2": "^3.0.5",
     "vuetify": "^2.2.29"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.2.0",
+    "@vue/cli-plugin-e2e-cypress": "^4.4.1",
     "@vue/cli-plugin-eslint": "~4.2.0",
     "@vue/cli-plugin-router": "^4.3.1",
+    "@vue/cli-plugin-unit-mocha": "^4.4.1",
     "@vue/cli-service": "~4.2.0",
+    "@vue/test-utils": "^1.0.3",
     "babel-eslint": "^10.0.3",
+    "chai": "^4.1.2",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.1.2",
+    "null-loader": "^4.0.0",
     "sass": "^1.19.0",
     "sass-loader": "^8.0.0",
     "vue-cli-plugin-vuetify": "~2.0.5",
@@ -39,7 +50,18 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {},
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "mocha": true
+        }
+      }
+    ]
   },
   "browserslist": [
     "> 1%",

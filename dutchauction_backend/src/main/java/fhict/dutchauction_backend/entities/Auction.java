@@ -8,35 +8,34 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+@Getter
+@Setter
 @Entity
 @Table
 public class Auction {
     @Id
-    @Getter
-    @Setter
     @GeneratedValue
     private long auctionId;
 
-    @Getter
-    @Setter
     @NotNull
     private String auctionName;
 
-    @Getter
-    @Setter
     @NotNull
     private String auctionDescription;
 
-    @Getter
-    @Setter
     @NotNull
     private Date endDate;
 
     @OneToMany(fetch = FetchType.EAGER)
-    @ElementCollection(targetClass = Category.class)
     private List<Category> categories;
 
     public Auction(){
+    }
+
+    public Auction(String auctionName, String auctionDescription, Date endDate){
+        this.auctionName = auctionName;
+        this.auctionDescription = auctionDescription;
+        this.endDate = endDate;
     }
 
     public Auction(Long auctionId, String auctionName, String auctionDescription, Date endDate){
